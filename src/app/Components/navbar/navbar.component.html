@@ -1,0 +1,100 @@
+<div class="container-fluid bg-light ">
+  <div class="d-flex justify-content-between">
+    <div class="flex-fill">
+      <div >
+        <a class="navbar-brand d-flex justify-content-center" >
+          <img src="../../../assets/images/Ve Got Nutt_s_free-file.png">
+        </a>
+      </div>
+    </div>
+    <div class="d-flex align-self-center">
+      <div *ngIf="auth.user$ | async as user; else anonymousUser" class="dropdown" >
+        <button  class="btn btn-light dropdown-toggle" style="padding-top: 20px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.displayName}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink='/my-orders'>My Orders</a>
+          <a class="dropdown-item" routerLink='/admin/orders'>Manage Orders</a>
+          <a class="dropdown-item" routerLink='/admin/products'>Manage Products</a>
+          <a class="dropdown-item" (click)="logout()">Log Out</a>
+        </div>
+      </div>
+      <ng-template #anonymousUser>
+        <a class="nav-link active" style="color:black;size:x-large;padding: 20px;" routerLink='login'>Login</a>
+      </ng-template>        
+      <h3 style="padding-top: 10px;padding-right: 10px;">|</h3>
+      <button class="btn btn-light" routerLink="/shopping-cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill d-flex align-self-center" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>     
+        </svg>
+        </button>
+      <span class="badge rounded-pill badge-notification bg-danger" style="height: 20px;" *ngIf="cart$ | async as cart">
+        {{ cart.totalItemsCount }}
+      </span>
+      <span style="font-size:x-large;padding: 10px;padding-top: 1;">Cart</span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="navbarCenteredExample" aria-controls="navbarCenteredExample" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+      <!-- Left links -->
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/products">All Products</a>
+        </li>
+        <!-- Navbar dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop By Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <app-product-filter [category]="category"></app-product-filter>
+
+            <!-- <li><a class="dropdown-item" href="">Dry fruits & Nuts</a></li>
+            <li><a class="dropdown-item" href="">Seeds</a></li>
+            <li><a class="dropdown-item" href="">Berries</a></li>
+            <li><a class="dropdown-item" href="">Healty Snacks</a></li>
+            <li><a class="dropdown-item" href="">Combo</a></li>
+            <li><a class="dropdown-item" href="">Sugar Substitutes</a></li> -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop By Health Goals/Superfoods
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="">Action</a></li>
+            <li><a class="dropdown-item" href="">Another action</a></li>
+            <li><a class="dropdown-item" href="">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About Us
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="">Action</a></li>
+            <li><a class="dropdown-item" href="">Another action</a></li>
+            <li><a class="dropdown-item" href="">Something else here</a></li>
+          </ul>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <div class="justify-content-end">
+      <a class="nav-link active" aria-current="page" style="color:black" routerLink="/categories">Categories</a>
+  </div>
+  <!-- Container wrapper -->
+</nav>

@@ -1,0 +1,28 @@
+.navbar-brand{
+    font-size: 50px;
+    padding: 20px;
+    color: black;
+}
+.nav-item{
+    font-size: medium;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.dropdown-menu{
+    transition: all 0.4s ease-in-out;
+}
+.header__action-item:not(:last-child)::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: calc(50% - 17px);
+    height: 34px;
+    width: 1px;
+}
+.dropdown-item{
+    cursor: pointer;
+}

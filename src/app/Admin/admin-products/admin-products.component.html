@@ -1,0 +1,42 @@
+<div style="padding: 5%;">
+    <a class="btn btn-primary" routerLink="/admin/products/new">New Product</a>
+</div>
+<p style="padding-left: 200px;padding-right: 200px;">    
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+</p>
+<div style="padding-left: 200px;padding-right: 200px;">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let p of filteredProducts">
+            <td>{{ p.title }}</td>
+            <td>{{ p.price | currency:'INR':true}}</td>
+            <td>
+                <a [routerLink]="['/admin/products/',p.key]">Edit</a>
+            </td>
+        </tbody>
+    </table>
+    
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let p of filteredProducts">
+            <td>{{ p.title }}</td>
+            <td>{{ p.price | currency:'INR':true}}</td>
+            <td>
+                <a [routerLink]="['/admin/products/',p.key]">Edit</a>
+            </td>
+        </tbody>
+    </table> -->
+</div>
